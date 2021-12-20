@@ -2,7 +2,7 @@ import numpy as np
 import pandas as pd
 from sklearn.preprocessing import LabelEncoder
 
-
+print()
 #Veri Seti Yüklenmeli
 data = pd.read_csv("C:/Users/bilin/Desktop/diyabet.csv")
 

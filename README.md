@@ -1,1 +1,1 @@
-# AI1
+# Creating an artificial neural network with diabetes dataset
