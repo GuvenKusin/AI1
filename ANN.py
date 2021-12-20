@@ -2,11 +2,10 @@ import numpy as np
 import pandas as pd
 from sklearn.preprocessing import LabelEncoder
 
-print()
-#Veri Seti Yüklenmeli
-data = pd.read_csv("C:/Users/bilin/Desktop/diyabet.csv")
+#Loading the dataset..!
+data = pd.read_csv("C:/Users/******/*******/diabetes.csv")
 
-#Kaç Sınıf Olduğunu Bulma..!
+#Finding How Many Classes There Are..!
 le = LabelEncoder().fit(data.output)
 liste = le.transform(data.output)
 classes = list(le.classes_)
@@ -39,38 +38,38 @@ model.compile(loss="binary_crossentropy", optimizer="nadam", metrics= ["accuracy
 
 model.fit(x_train, y_train, validation_data=(x_test, categorizated_y_test), epochs=100)
 
-print("Ortalama Eğitim Kaybı= ", np.mean(model.history.history["loss"]))
+print("Average Education Loss= ", np.mean(model.history.history["loss"]))
 
-print("Ortalama Eğitim Başarımı= ", np.mean(model.history.history["accuracy"]))
+print("Average Educational Performance= ", np.mean(model.history.history["accuracy"]))
 
-print("Ortalama Doğrulama Kaybı= ", np.mean(model.history.history["val_loss"]))
+print("Average Loss of Validation= ", np.mean(model.history.history["val_loss"]))
 
-print("Ortalama Doğrulama Başarımı= ", np.mean(model.history.history["val_accuracy"]))
+print("Average Verification Performance= ", np.mean(model.history.history["val_accuracy"]))
 
 
-#Başarım Grafiği
+#Achievement Chart
 
 
 import matplotlib.pyplot as plt
 plt.plot(model.history.history["accuracy"])
 plt.plot(model.history.history["val_accuracy"])
-plt.title("Model Başarımı")
-plt.ylabel("Başarım")
-plt.xlabel("Epok Sayısı")
-plt.legend(["Eğitim", "Test"], loc = "upper left" )
+plt.title("Model Achievement")
+plt.ylabel("Achievement")
+plt.xlabel("Epoch Number")
+plt.legend(["Education", "Test"], loc = "upper left" )
 plt.show
 
 
-#Kayıp Grafiği
+#Loss Chart
 
 
 import matplotlib.pyplot as plt
 plt.plot(model.history.history["loss"])
 plt.plot(model.history.history["val_loss"])
-plt.title("Model kaybı")
-plt.ylabel("kayıp")
-plt.xlabel("Epok Sayısı")
-plt.legend(["Eğitim", "Test"], loc = "upper left" )
+plt.title("Model Loss")
+plt.ylabel("Loss")
+plt.xlabel("Epoch Number")
+plt.legend(["Education", "Test"], loc = "upper left" )
 plt.show
 
 
@@ -83,16 +82,15 @@ roc_auc = metrics.auc(fpr, tpr)
 
 import matplotlib.pyplot as plt
 
-plt.title("Kabul Edilen")
+plt.title("Accepted")
 plt.plot(fpr, tpr, 'b', label = 'AUC = %0.2f' % roc_auc)
 plt.legend(loc = 'lower right')
 plt.plot([0, 1], [0, 1],'r--')
 plt.xlim([0, 1])
 plt.ylim([0, 1])
-plt.ylabel('olumlu Doğru Aralık')
-plt.xlabel('Olumlu Yanlış Aralık')
+plt.ylabel('Positive Correct Range')
+plt.xlabel('Positive False Range')
 plt.show()
-
 
 
 
